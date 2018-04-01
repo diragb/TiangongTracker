@@ -50,8 +50,11 @@ body {
     <script src="scripts/astrolib.min.js"></script>
     <script src="scripts/orbit-displays.min.js"></script>
     <script>
+	var crashTime = 1522625400;
     	var playMusic0 = false;
     	var playMusic1 = false;
+	var playMusic2 = false;
+    	var playMusic3 = false;
     	var lowestHeight = 100;
         var tles;
 
@@ -159,7 +162,7 @@ body {
             if (playMusic0) {
             	if (playMusic1 == false) {
         		var ele = document.getElementById("musik");
-            		ele.innerHTML = "<embed src='music/MozartEineKleineNachtmusik.mp3' autostart='true' type='audio/mpeg' loop='true' height='70' width='300'/><br/><br/><p style='color: black;font-size: 20px;text-align: center;'>IT'S FUCKING DONE FOR, MATE.";
+            		ele.innerHTML = "<embed src='https://tiangongfalls.000webhostapp.com/music/MozartEineKleineNachtmusik.mp3' autostart='true' type='audio/mpeg' loop='true' height='70' width='300'/><br/><br/><p style='color: black; font-size: 20px; text-align: center; font-weight: bold !important;'>IT'S FUCKING DONE FOR, MATE.";
             		playMusic1 = true;
             	}
        	    }
@@ -247,6 +250,32 @@ body {
                     var diffLongRast = diffLong.toFixed(1);
                     var x = document.getElementById("proximity");
                     x.innerHTML = "<br/><br/>Hey dude, trust me on this.<br/>Tiangong - 1 is REALLY close to your location.<br/><font style='font-size: 15px;'>Latitudinal difference: " + diffLatRast + "<br/>Longitudinal difference: " + diffLongRast + "</font>";
+                }
+            }
+        }
+	
+        window.setInterval(function getTimeLeft() {
+            var timeStampInMs = window.performance && window.performance.now && window.performance.timing && window.performance.timing.navigationStart ? window.performance.now() + window.performance.timing.navigationStart : Date.now();
+            var timeLeft = crashTime - Math.floor(timeStampInMs / 1000);
+            var hoursLeft = timeLeft/3600;
+            var x = document.getElementById("hoursLeft");
+            x.innerHTML = hoursLeft.toFixed(1);
+            
+            if (timeLeft <= 0) {
+                diffLat = 0;
+                diffLong = 0;
+                TiangongIsClose();
+            	playMusic2 = true;
+            	playEndMusic();
+            }
+        });
+	
+        function playEndMusic() {
+            if (playMusic2) {
+                if (playMusic3 == false) {
+        	        var ele = document.getElementById("musik");
+            	    ele.innerHTML = "<embed src='https://tiangongfalls.000webhostapp.com/music/MozartEineKleineNachtmusik.mp3' autostart='true' type='audio/mpeg' loop='true' height='1' width='1'/><br/><br/><p style='color: black; font-size: 50px; text-align: center; '>IT'S FUCKING DONE FOR, MATE.<br/><br/><br/>";
+            	    playMusic3 = true;
                 }
             }
         }
