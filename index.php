@@ -25,7 +25,7 @@ body {
 <title>Tiangong Falls</title>
 <meta name="description" content="Tiangong - 1 falls."/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script type="text/javascript" src="https://tiangongfalls.000webhostapp.com/scripts/standard.min.js"></script>
+    <script type="text/javascript" src="scripts/standard.min.js"></script>
     <script type="text/javascript">
         function updateLocalTime(utc) {
             var localdiff = parseInt($('#utcOffset').val());
@@ -45,10 +45,10 @@ body {
         }
     </style>
     
-    <script src="https://tiangongfalls.000webhostapp.com/scripts/moment.min.js"></script>
-    <script src="https://tiangongfalls.000webhostapp.com/scripts/numeral.min.js"></script>
-    <script src="https://tiangongfalls.000webhostapp.com/scripts/astrolib.min.js"></script>
-    <script src="https://tiangongfalls.000webhostapp.com/scripts/orbit-displays.min.js"></script>
+    <script src="scripts/moment.min.js"></script>
+    <script src="scripts/numeral.min.js"></script>
+    <script src="scripts/astrolib.min.js"></script>
+    <script src="scripts/orbit-displays.min.js"></script>
     <script>
     	var playMusic0 = false;
     	var playMusic1 = false;
@@ -56,7 +56,7 @@ body {
         var tles;
 
         $(function () {
-            $.getJSON('https://tiangongfalls.000webhostapp.com/api/tles/37820.json',
+            $.getJSON('api/tles/37820.json',
                 function (data) {
                     tles = data;
                     initGroundTrack();
@@ -69,28 +69,28 @@ body {
         earthImage.onload = function () {
             initGroundTrack();
         };
-        earthImage.src = 'https://tiangongfalls.000webhostapp.com/images/earthmap2k.jpg';
+        earthImage.src = 'images/earthmap2k.jpg';
 
         var issIcon = new Image();
         issIcon.onload = function () {
 
             initGroundTrack();
         };
-        issIcon.src = 'https://tiangongfalls.000webhostapp.com/images/iss.png';
+        issIcon.src = 'images/iss.png';
 
         var gsIcon = new Image();
         gsIcon.onload = function () {
 
             initGroundTrack();
         };
-        gsIcon.src = 'https://tiangongfalls.000webhostapp.com/images/groundstation32.png';
+        gsIcon.src = 'images/groundstation32.png';
 
         var defaultIcon = new Image();
         defaultIcon.onload = function () {
 
             initGroundTrack();
         };
-        defaultIcon.src = 'https://tiangongfalls.000webhostapp.com/images/default.png';
+        defaultIcon.src = 'images/default.png';
 
         function initGroundTrack() {
 
@@ -159,7 +159,7 @@ body {
             if (playMusic0) {
             	if (playMusic1 == false) {
         		var ele = document.getElementById("musik");
-            		ele.innerHTML = "<embed src='https://tiangongfalls.000webhostapp.com/music/MozartEineKleineNachtmusik.mp3' autostart='true' type='audio/mpeg' loop='true' height='70' width='300'/><br/><br/><p style='color: black;font-size: 20px;text-align: center;'>IT'S FUCKING DONE FOR, MATE.";
+            		ele.innerHTML = "<embed src='music/MozartEineKleineNachtmusik.mp3' autostart='true' type='audio/mpeg' loop='true' height='70' width='300'/><br/><br/><p style='color: black;font-size: 20px;text-align: center;'>IT'S FUCKING DONE FOR, MATE.";
             		playMusic1 = true;
             	}
        	    }
